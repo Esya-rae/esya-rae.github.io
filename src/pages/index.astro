@@ -1,17 +1,228 @@
 ---
+// src/pages/index.astro
+import { getCollection, getEntry } from 'astro:content';
 
+// Fetch the publication data
+const sortedPublications = (await getCollection('publications')).sort(
+  (a, b) => b.year - a.year,
+);
+
+const name = "Alesya Raevskaya (Esya)";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{name} | PhD Researcher</title>
+  </head>
+  <body>
+    <header class="hero">
+      <h1>{name}</h1>
+      <p class="subtitle">PhD Candidate in Computer Science at <span class="university">Aalto university</span></p>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#publications">Publications</a>
+        <a href="#teaching">Teaching</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="about" class="section">
+        <h2>About Me</h2>
+        <p class="bio-text">
+          I am a PhD researcher at Distribited Algorithms group. 
+		  I am mostly interested in complexity theory in the field of Distributed Algorithms. 
+        </p>
+      </section>
+
+      <section id="publications" class="section">
+        <h2>Publications</h2>
+        <div class="pub-list">
+          {sortedPublications.map((pub) => (
+            <article class="pub-card">
+              <span class="pub-year">{pub.data.year}</span>
+              <div class="pub-content">
+                <h3 class="pub-title">{pub.data.title}</h3>
+                <p class="pub-authors">{pub.data.authors}</p>
+                <p class="pub-venue">
+                  {pub.data.venue}
+                </p>
+                <div class="pub-links">
+                  {pub.data.pdfLink && <a href={pub.data.pdfLink} class="btn-link">[PDF]</a>}
+                  {pub.data.codeLink && <a href={pub.data.codeLink} class="btn-link">[Code]</a>}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+	  <section id="teaching" class="section">
+        <h2>Teaching & Service</h2>
+		<ul>
+            <li class="service-text">Teaching assistant for Distributed Algorithms</li>
+			<li class="service-text">Reviewer for DISC 2026</li>
+        </ul>
+      </section>
+    </main>
+  </body>
 </html>
+
+<style>
+  /* Modern CSS Reset & Variable setup */
+  :root {
+    --bg-color: #fafafa;
+    --text-main: #1f2937;
+    --text-muted: #4b5563;
+	--text-more-muted: #797a7d;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --border-color: #e5e7eb;
+    --card-bg: #ffffff;
+  }
+
+  html {
+	font-size: 18px;
+  }
+
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 20px;
+  }
+
+  /* Header / Hero Styling */
+  .hero h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .university {
+    font-weight: 600;
+    color: var(--text-main);
+  }
+
+  .nav-links a {
+    color: var(--text-more-muted);
+    text-decoration: none;
+    margin-right: 1.5rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+	font-size: 1.5rem;
+  }
+
+  .nav-links a:hover {
+    color: var(--accent);
+  }
+
+  /* Structural Sections */
+  .section {
+    margin-top: 3.5rem;
+  }
+
+  .section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    border-bottom: 3px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Bio section */
+  .bio-text {
+	font-size: 1.5rem;
+	color: var(--text-main);
+	line-height: 1.8;
+	max-width: 110ch;
+  }
+
+  /* Teaching and service section */
+  .service-text {
+	font-size: 1.5rem;
+	color: var(--text-main);
+	line-height: 1.8;
+	max-width: 80ch;
+  }
+
+  /* Publication Card Grid Layout */
+  .pub-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .pub-card {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 1rem;
+    background: var(--card-bg);
+    padding: 1.25rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .pub-year {
+    font-weight: 700;
+    color: var(--text-muted);
+    font-size: 1.25rem;
+    padding-top: 2px;
+  }
+
+  .pub-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+  }
+
+  .pub-authors {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin: 0 0 0.25rem 0;
+  }
+
+  .pub-venue {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--text-muted);
+    margin: 0 0 0.75rem 0;
+  }
+
+  .pub-links {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .btn-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .btn-link:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+  }
+
+  /* Responsive adjustment for small screens */
+  @media (max-width: 480px) {
+    .pub-card {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+  }
+</style>
