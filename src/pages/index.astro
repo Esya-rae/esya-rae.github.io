@@ -4,7 +4,7 @@ import { getCollection, getEntry } from 'astro:content';
 
 // Fetch the publication data
 const sortedPublications = (await getCollection('publications')).sort(
-  (a, b) => b.year - a.year,
+  (a, b) => b.data.year - a.data.year,
 );
 
 const coauthors = (await getCollection('coauthors'));
@@ -28,7 +28,7 @@ const lastUpdated = today.toLocaleDateString('en-US', { month: 'long', year: 'nu
   <body>
     <header class="hero">
       <h1>{name}</h1>
-      <p class="subtitle">PhD Student in Computer Science at <span class="university">Aalto university</span></p>
+      <p class="subtitle">PhD Student in Computer Science at <a href="https://www.aalto.fi/en" class="university">Aalto university</a></p>
       
       <p class="contact-text">Email: name dot surname at aalto dot fi</p>
 
@@ -36,6 +36,7 @@ const lastUpdated = today.toLocaleDateString('en-US', { month: 'long', year: 'nu
         <a href="#about">About</a>
         <a href="#publications">Publications</a>
         <a href="#teaching">Teaching</a>
+        <a href="#service">Activities</a>
         <a href="/CV.pdf">CV</a>
       </nav>
     </header>
@@ -91,7 +92,7 @@ const lastUpdated = today.toLocaleDateString('en-US', { month: 'long', year: 'nu
       </section>
 
 	  <section id="teaching" class="section">
-        <h2>Teaching & Service</h2>
+        <h2>Teaching</h2>
 		    <ul>
             <li>
               <p  class="service-text"> Teaching assistant for Distributed Algorithms </p>
@@ -108,8 +109,17 @@ const lastUpdated = today.toLocaleDateString('en-US', { month: 'long', year: 'nu
             <li>
               <p  class="service-text"> Teaching assistant for Algorithms and Data Structures </p>
               <p  class="service-place"> HSE, Moscow, Russia </p></li>
+        </ul>
+      </section>
+
+      <section id="service" class="section">
+        <h2>Activities & Service</h2>
+		    <ul>
+            <li>
+              <p  class="service-text"> Organiser of <a href={"https://algorithms.fi/puzzle-and-pizza/"} class="hidden-link">Pizza & Puzzles</a></p>
+            </li>
 			      <li>
-              <p  class="service-text"> Reviewer for DISC 2026 </p>
+              <p  class="service-text"> Reviewer for <a href={"https://www.disc-conference.org/wp/disc2026/"} class="hidden-link">DISC 2026</a></p>
             </li>
         </ul>
       </section>
@@ -166,6 +176,13 @@ const lastUpdated = today.toLocaleDateString('en-US', { month: 'long', year: 'nu
   .university {
     font-weight: 600;
     color: var(--text-main);
+    text-decoration: none;
+  }
+
+  .university:hover {
+    font-weight: 600;
+    color: var(--accent-hover);
+    text-decoration: none;
   }
 
   .nav-links a {
@@ -319,6 +336,15 @@ const lastUpdated = today.toLocaleDateString('en-US', { month: 'long', year: 'nu
   .link:hover {
     color: var(--accent-hover);
     text-decoration: underline;
+  }
+
+  .hidden-link {
+    color: var(--text-main);
+    text-decoration: none;
+  }
+
+  .hidden-link:hover {
+    color: var(--accent-hover);
   }
 
   /* Footer styling */
