@@ -30,6 +30,7 @@ const name = "Alesya Raevskaya (Esya)";
         <a href="#about">About</a>
         <a href="#publications">Publications</a>
         <a href="#teaching">Teaching</a>
+        <a href="/CV.pdf">CV</a>
       </nav>
     </header>
 
@@ -65,9 +66,25 @@ const name = "Alesya Raevskaya (Esya)";
 
 	  <section id="teaching" class="section">
         <h2>Teaching & Service</h2>
-		<ul>
-            <li class="service-text">Teaching assistant for Distributed Algorithms</li>
-			<li class="service-text">Reviewer for DISC 2026</li>
+		    <ul>
+            <li>
+              <p  class="service-text"> Teaching assistant for Distributed Algorithms </p>
+              <p  class="service-place"> Aalto University, Espoo, Finland </p></li>
+            <li>
+              <p  class="service-text"> Developer for Programming Parallel Computers </p>
+              <p  class="service-place"> Aalto University, Espoo, Finland </p></li>
+            <li>
+              <p  class="service-text"> Teaching assistant for Principles of Algorithmic Techniques </p>
+              <p  class="service-place"> Aalto University, Espoo, Finland </p></li>
+            <li>
+              <p  class="service-text"> Teaching assistant for Calculus & Advanced Calculus </p>
+              <p  class="service-place"> HSE, Moscow, Russia </p></li>
+            <li>
+              <p  class="service-text"> Teaching assistant for Algorithms and Data Structures </p>
+              <p  class="service-place"> HSE, Moscow, Russia </p></li>
+			      <li>
+              <p  class="service-text"> Reviewer for DISC 2026 </p>
+            </li>
         </ul>
       </section>
     </main>
@@ -165,10 +182,19 @@ const name = "Alesya Raevskaya (Esya)";
 
   /* Teaching and service section */
   .service-text {
-	font-size: 1.5rem;
-	color: var(--text-main);
-	line-height: 1.8;
-	max-width: 80ch;
+    font-size: 1.5rem;
+    color: var(--text-main);
+    line-height: 1.2;
+    max-width: 100ch;
+    margin-bottom: 0rem;
+  }
+
+  .service-place {
+    font-size: 1.5rem;
+    color: var(--text-more-muted);
+    line-height: 1.2;
+    max-width: 100ch;
+    margin-top: 0rem;
   }
 
   /* Publication Card Grid Layout */
