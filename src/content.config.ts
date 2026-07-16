@@ -9,7 +9,7 @@ const publicationsCollection = defineCollection({
     z.object({
       id: z.string(),
       title: z.string(),
-      authors: z.string(),
+      authors: z.array(z.string()),
       venue: z.string(),
       year: z.number(),
       pdfLink: z.string().optional(),
@@ -17,6 +17,16 @@ const publicationsCollection = defineCollection({
     })
 });
 
+const coauthorsCollection = defineCollection({
+  loader: file("src/content/coauthors.yml"),
+  schema: // Wrapped the schema in an array validator
+    z.object({
+      id: z.string(),
+      url: z.string().optional(),
+    })
+});
+
 export const collections = {
   'publications': publicationsCollection,
+  'coauthors': coauthorsCollection,
 };

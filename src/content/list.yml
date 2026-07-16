@@ -1,27 +1,31 @@
 - id: "ba_lcl_restrictions"
   title: "Brief Announcement: It Does Not Matter How You Define Locally Checkable Labelings"
-  authors: "Antonio Cruciani, Avinandan Das, Alesya Raevskaya, Jukka Suomela"
+  authors: 
+    - Antonio Cruciani
+    - Avinandan Das
+    - Alesya Raevskaya
+    - Jukka Suomela
   venue: "PODC '26: ACM Symposium on Principles of Distributed Computing"
   year: 2026
   pdfLink: "https://dl.acm.org/doi/pdf/10.1145/3796701.3815923"
 
 - id: "ba_2_colouring"
   title: "Brief Announcement: 2-Coloring Cycles in One Round"
-  authors: "Maxime Flin, Alesya Raevskaya, Ronja Stimpert, Jukka Suomela, Qingxin Yang"
-  venue: "PODC '26: ACM Symposium on Principles of Distributed Computi"
+  authors: ["Maxime Flin", "Alesya Raevskaya", "Ronja Stimpert", "Jukka Suomela", "Qingxin Yang"]
+  venue: "PODC '26: ACM Symposium on Principles of Distributed Computing"
   year: 2026
   pdfLink: "https://dl.acm.org/doi/pdf/10.1145/3796701.3815937"
 
 - id: "ba_lcl_restrictions_arxiv"
   title: "It Does Not Matter How You Define Locally Checkable Labelings"
-  authors: "Antonio Cruciani, Avinandan Das, Alesya Raevskaya, Jukka Suomela"
+  authors: ["Antonio Cruciani", "Avinandan Das", "Alesya Raevskaya", "Jukka Suomela"]
   venue: "ArXiv Preprint"
   year: 2026
   pdfLink: "https://arxiv.org/abs/2602.18188"
 
 - id: "MaxSAT"
   title: "Optimal Counterfactual Explanations for Random Forests with MaxSAT"
-  authors: "Alesya Raevskaya, Tuomo Lehtonen"
+  authors: ["Alesya Raevskaya", "Tuomo Lehtonen"]
   venue: "ECAI 2025"
   year: 2025
   pdfLink: "https://ebooks.iospress.nl/doi/10.3233/FAIA250895"
