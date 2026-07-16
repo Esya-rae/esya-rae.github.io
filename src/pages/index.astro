@@ -11,6 +11,9 @@ const coauthors = (await getCollection('coauthors'));
 
 const name = "Alesya Raevskaya (Esya)";
 const myAuthorName = "Alesya Raevskaya";
+
+const today = new Date();
+const lastUpdated = today.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 ---
 
 <html lang="en">
@@ -19,7 +22,7 @@ const myAuthorName = "Alesya Raevskaya";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="google-site-verification" content="bVJ73wRzUzaAZQFjMb_ntGH8E01JKrNRuhlRR4DHqM4" />
 	<meta name="description" content="Personal portfolio of Alesya Raevskaya (Esya), a PhD researcher specializing in Distributed Algorithms" />
-	<link rel="icon" type="image/png" href="/logo.png" />
+	<link rel="icon" type="image/png" href="/logo3.png" />
     <title>{name}</title>
   </head>
   <body>
@@ -112,6 +115,9 @@ const myAuthorName = "Alesya Raevskaya";
       </section>
     </main>
   </body>
+  <footer class="site-footer">
+    <p>Last updated: {lastUpdated}</p>
+  </footer>
 </html>
 
 <style>
@@ -312,6 +318,16 @@ const myAuthorName = "Alesya Raevskaya";
   .link:hover {
     color: var(--accent-hover);
     text-decoration: underline;
+  }
+
+  /* Footer styling */
+  .site-footer {
+    margin-top: 5rem; /* Creates a nice gap below your last publication */
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color); /* Adds a subtle dividing line */
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-more-muted); /* Uses the same muted color as your links */
   }
 
   /* Responsive adjustment for small screens */
